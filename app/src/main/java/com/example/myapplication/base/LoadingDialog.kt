@@ -1,4 +1,4 @@
-package com.subi.likeanh.utils
+package com.example.myapplication.base
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -7,7 +7,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.subi.likeanh.databinding.ProgressbarBinding
+import com.example.myapplication.databinding.ProgressbarBinding
 
 
 @SuppressLint("StaticFieldLeak")

@@ -13,12 +13,6 @@ import com.example.myapplication.databinding.ActivityMainBinding
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     private lateinit var navController: NavController
 
-    private fun initTheNavGraph() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.findNavController()
-        setupActionBarWithNavController(navController)
-    }
 
     override fun initLayout(): Int = R.layout.activity_main
 
@@ -32,5 +26,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun initViews() {
 
+    }
+
+    private fun initTheNavGraph() {
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        navController = navHostFragment.findNavController()
+        setupActionBarWithNavController(navController)
     }
 }
