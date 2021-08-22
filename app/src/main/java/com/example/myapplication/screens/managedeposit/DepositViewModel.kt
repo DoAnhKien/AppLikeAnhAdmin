@@ -134,28 +134,9 @@ class DepositViewModel : ViewModel() {
     }
 
     fun checkToUpdateTheIncomeDatabase(deposit: Deposit) = viewModelScope.launch {
-        incomeDatabase.child(deposit.uid)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    for (value in snapshot.children) {
-                        val history = value.getValue(History::class.java)
-                        val hashMap: HashMap<String, String> =
-                            HashMap<String, String>()
-                        hashMap["userStatus"] = "true"
-                        incomeDatabase
-                            .updateChildren(hashMap as Map<String, Any>)
-                            .addOnSuccessListener {
-                            }.addOnFailureListener {
-                                Log.d(TAG, "updateTheUserPackage: + ${it.message}")
-                            }
-                    }
-                }
+        deposit.status = true
+        incomeDatabase.child(deposit.uid).push().setValue(deposit)
 
-                override fun onCancelled(error: DatabaseError) {
-
-                }
-
-            })
     }
 
     fun getDataOfTheUser(deposit: Deposit) = viewModelScope.launch {
