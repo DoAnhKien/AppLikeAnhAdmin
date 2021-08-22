@@ -13,8 +13,8 @@
         android:theme="@style/Theme.MyApplication">
         <activity
             android:name=".screens.splash.SplashActivity"
-            android:theme="@style/Splash"
-            android:exported="true" >
+            android:exported="true"
+            android:theme="@style/Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,10 +22,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".screens.main.MainActivity" />
-        <activity
-            android:name=".screens.splash.LoginActivity">
+        <activity android:name=".screens.splash.LoginActivity" />
+        <activity android:name=".screens.managedeposit.ManageDepositActivity" />
+        <activity android:name=".screens.managerhistory.ManageHistoryActivity" />
+        <activity android:name=".screens.managerpayoff.ManagePayOffActivity" />
+        <activity android:name=".screens.manageruser.ManageUserActivity" />
 
-        </activity>
     </application>
 
 </manifest>

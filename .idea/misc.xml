@@ -5,6 +5,13 @@
       <map>
         <entry key="..\:/AppLikeAnhAdmin/app/src/main/res/layout/activity_login.xml" value="0.2563405797101449" />
         <entry key="..\:/AppLikeAnhAdmin/app/src/main/res/layout/activity_main.xml" value="0.35989583333333336" />
+        <entry key="..\:/Freelancer/AppLikeAnhAdmin/app/src/main/res/layout/activity_login.xml" value="0.307518115942029" />
+        <entry key="..\:/Freelancer/AppLikeAnhAdmin/app/src/main/res/layout/activity_main.xml" value="0.307518115942029" />
+        <entry key="..\:/Freelancer/AppLikeAnhAdmin/app/src/main/res/layout/activity_manage_deposit.xml" value="0.35989583333333336" />
+        <entry key="..\:/Freelancer/AppLikeAnhAdmin/app/src/main/res/layout/activity_manage_pay_off.xml" value="0.35989583333333336" />
+        <entry key="..\:/Freelancer/AppLikeAnhAdmin/app/src/main/res/layout/activity_manage_user.xml" value="0.35989583333333336" />
+        <entry key="..\:/Freelancer/AppLikeAnhAdmin/app/src/main/res/layout/activity_mange_history.xml" value="0.35989583333333336" />
+        <entry key="..\:/Freelancer/AppLikeAnhAdmin/app/src/main/res/layout/item_deposit.xml" value="0.371875" />
       </map>
     </option>
   </component>

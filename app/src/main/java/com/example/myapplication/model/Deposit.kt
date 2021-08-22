@@ -1,6 +1,6 @@
 package com.example.myapplication.model
 
-data class NapRut(
+data class Deposit(
     var uid: String,
     var money: String,
     var packages: String,
