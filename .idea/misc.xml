@@ -3,13 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Freelancer/AppLikeAnhAdmin/app/src/main/res/drawable/boder.xml" value="0.2171875" />
-        <entry key="..\:/Freelancer/AppLikeAnhAdmin/app/src/main/res/drawable/gradien.xml" value="0.37604166666666666" />
-        <entry key="..\:/Freelancer/AppLikeAnhAdmin/app/src/main/res/layout/activity_main.xml" value="0.18697916666666667" />
-        <entry key="..\:/Freelancer/AppLikeAnhAdmin/app/src/main/res/layout/activity_splash.xml" value="0.35989583333333336" />
-        <entry key="..\:/Freelancer/AppLikeAnhAdmin/app/src/main/res/layout/dialog_base.xml" value="0.371875" />
-        <entry key="..\:/Freelancer/AppLikeAnhAdmin/app/src/main/res/layout/progressbar.xml" value="0.35989583333333336" />
-        <entry key="..\:/Freelancer/AppLikeAnhAdmin/app/src/main/res/menu/bottom_nav.xml" value="0.35989583333333336" />
+        <entry key="..\:/AppLikeAnhAdmin/app/src/main/res/layout/activity_login.xml" value="0.2563405797101449" />
+        <entry key="..\:/AppLikeAnhAdmin/app/src/main/res/layout/activity_main.xml" value="0.35989583333333336" />
       </map>
     </option>
   </component>

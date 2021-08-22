@@ -19,7 +19,7 @@ abstract class BaseActivity<T : ViewDataBinding?>(protected var binding: T? = nu
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        /*if (!isTaskRoot && javaClass == SplashActivity::class.java) {
+        /*if (!isTaskRoot && javaClass == LoginActivity::class.java) {
             finish()
             return
         }*/

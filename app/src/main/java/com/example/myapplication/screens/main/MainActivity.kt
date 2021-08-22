@@ -11,13 +11,10 @@ import com.example.myapplication.base.BaseActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
-    private lateinit var navController: NavController
-
 
     override fun initLayout(): Int = R.layout.activity_main
 
     override fun init() {
-        initTheNavGraph()
     }
 
     override fun setOnClickForViews() {
@@ -28,10 +25,4 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     }
 
-    private fun initTheNavGraph() {
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.findNavController()
-        setupActionBarWithNavController(navController)
-    }
 }
