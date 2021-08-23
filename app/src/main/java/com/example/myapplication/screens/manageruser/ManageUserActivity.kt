@@ -13,6 +13,7 @@ import com.example.myapplication.base.ShowDialog
 import com.example.myapplication.databinding.ActivityManageUserBinding
 import com.example.myapplication.model.User
 import com.example.myapplication.screens.userdeposit.UserDepositActivity
+import com.example.myapplication.screens.userincome.UserIncomeActivity
 import kotlinx.android.synthetic.main.activity_manage_deposit.*
 import kotlinx.android.synthetic.main.activity_manage_user.*
 
@@ -88,7 +89,7 @@ class ManageUserActivity : BaseActivity<ActivityManageUserBinding>(), ItemUserOn
                 ).show()
             }
             Const.VIEW_INCOME_USER -> {
-                Toast.makeText(this, "${user?.name}", Toast.LENGTH_SHORT).show()
+                moveToUserIncomeActivity(user)
             }
             Const.VIEW_HISTORY_DEPOSIT_USER -> {
                 moveToUserDepositActivity(user)
@@ -100,6 +101,14 @@ class ManageUserActivity : BaseActivity<ActivityManageUserBinding>(), ItemUserOn
 
     private fun moveToUserDepositActivity(user: User?) {
         val intent = Intent(this, UserDepositActivity::class.java).apply {
+            putExtra("123", user)
+        }
+        startActivity(intent)
+    }
+
+
+    private fun moveToUserIncomeActivity(user: User?) {
+        val intent = Intent(this, UserIncomeActivity::class.java).apply {
             putExtra("123", user)
         }
         startActivity(intent)

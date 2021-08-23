@@ -24,7 +24,6 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/main"
                 android:orientation="horizontal"
                 android:padding="10dp">
 
@@ -40,12 +39,14 @@
 
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:textColor="@color/main"
                         setUserNameForUser="@{user}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:textColor="@color/main"
                         setUserBankForUser="@{user}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -53,6 +54,7 @@
 
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:textColor="@color/main"
                         setUserMoneyForUser="@{user}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

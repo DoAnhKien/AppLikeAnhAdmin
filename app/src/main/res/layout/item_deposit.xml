@@ -27,18 +27,20 @@
                 android:orientation="vertical"
                 android:padding="10dp">
 
+
                 <TextView
+
                     setTextForDeposit="@{deposit}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:textColor="@color/main"
                     android:textStyle="bold" />
 
                 <TextView
                     setTextForRutNapDeposit="@{deposit}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
+                    android:textColor="@color/main"
                     android:textStyle="bold" />
 
             </LinearLayout>
