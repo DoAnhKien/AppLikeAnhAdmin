@@ -1,6 +1,7 @@
 package com.example.myapplication.screens.manageruser
 
 import android.content.Intent
+import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -90,15 +91,17 @@ class ManageUserActivity : BaseActivity<ActivityManageUserBinding>(), ItemUserOn
                 Toast.makeText(this, "${user?.name}", Toast.LENGTH_SHORT).show()
             }
             Const.VIEW_HISTORY_DEPOSIT_USER -> {
-                moveToUserDepositActivity()
+                moveToUserDepositActivity(user)
 
             }
         }
 
     }
 
-    private fun moveToUserDepositActivity() {
-        val intent = Intent(this, UserDepositActivity::class.java)
+    private fun moveToUserDepositActivity(user: User?) {
+        val intent = Intent(this, UserDepositActivity::class.java).apply {
+            putExtra("123", user)
+        }
         startActivity(intent)
     }
 

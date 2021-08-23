@@ -1,5 +1,9 @@
 package com.example.myapplication.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class User(
     var uid: String,
     var phone: String,
@@ -20,7 +24,7 @@ data class User(
     val totalLike: String,
     val index: String
 
-) {
+) : Parcelable {
     constructor() : this(
         "",
         "",

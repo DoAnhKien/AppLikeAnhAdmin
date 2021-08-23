@@ -73,11 +73,11 @@ object BindingUtils {
     fun incomeTypeB(tv: TextView, deposit: Deposit) {
         val fm = DecimalFormat("#,###")
         if (deposit.isRut) {
-            tv.text = "Bạn đã rút + ${fm.format(deposit?.money.toLong())} VNĐ"
+            tv.text = "Bạn đã rút - ${fm.format(deposit?.money.toLong())} VNĐ"
             tv.setTextColor(R.color.nap)
             return
         }
-        tv.text = "Bạn đã nạp - ${fm.format(deposit?.money.toLong())} VNĐ"
+        tv.text = "Bạn đã nạp + ${fm.format(deposit?.money.toLong())} VNĐ"
         tv.setTextColor(R.color.rut)
 
     }
