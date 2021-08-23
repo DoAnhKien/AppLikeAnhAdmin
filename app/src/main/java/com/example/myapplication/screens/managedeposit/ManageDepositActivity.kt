@@ -153,6 +153,6 @@ class ManageDepositActivity : BaseActivity<ActivityManageDepositBinding>(), Item
 
 
     override fun onLongClick(position: Int, deposit: Deposit) {
-        TODO("Not yet implemented")
+
     }
 }

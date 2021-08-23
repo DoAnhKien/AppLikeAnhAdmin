@@ -27,7 +27,7 @@
         <activity android:name=".screens.managerhistory.ManageHistoryActivity" />
         <activity android:name=".screens.managerpayoff.ManagePayOffActivity" />
         <activity android:name=".screens.manageruser.ManageUserActivity" />
-
+        <activity android:name=".screens.userdeposit.UserDepositActivity" />
     </application>
 
 </manifest>

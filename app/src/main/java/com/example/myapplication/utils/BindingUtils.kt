@@ -8,6 +8,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.model.Deposit
+import com.example.myapplication.model.User
 import java.lang.Exception
 import java.text.DecimalFormat
 
@@ -34,6 +35,51 @@ object BindingUtils {
     @JvmStatic
     fun incomeTypeA(tv: TextView, deposit: Deposit) {
         tv.text = "ID người dùng ${deposit.uid}"
+    }
+
+
+    @BindingAdapter("setUserNameForUser")
+    @JvmStatic
+    fun setUserNameForUser(tv: TextView, user: User) {
+        tv.text = "Họ và tên: ${user.name}"
+    }
+
+    @BindingAdapter("setUserBankForUser")
+    @JvmStatic
+    fun setUserBankForUser(tv: TextView, user: User) {
+        tv.text = "Tên ngân hàng: ${user.bank}"
+    }
+
+    @BindingAdapter("setUserMoneyForUser")
+    @JvmStatic
+    fun setUserMoneyForUser(tv: TextView, user: User) {
+        tv.text = "Số tiền trong ngân hàng: ${user.totalMoney}"
+    }
+
+    @BindingAdapter("setImageForIncomeType")
+    @JvmStatic
+    fun incomeType(img: ImageView, deposit: Deposit) {
+        if (deposit.isRut) {
+            Glide.with(img).load(R.drawable.ic_plus).into(img)
+            return
+        }
+        Glide.with(img).load(R.drawable.ic_minus).into(img)
+    }
+
+
+    @SuppressLint("ResourceAsColor")
+    @BindingAdapter("setTextForIncomeType")
+    @JvmStatic
+    fun incomeTypeB(tv: TextView, deposit: Deposit) {
+        val fm = DecimalFormat("#,###")
+        if (deposit.isRut) {
+            tv.text = "Bạn đã rút + ${fm.format(deposit?.money.toLong())} VNĐ"
+            tv.setTextColor(R.color.nap)
+            return
+        }
+        tv.text = "Bạn đã nạp - ${fm.format(deposit?.money.toLong())} VNĐ"
+        tv.setTextColor(R.color.rut)
+
     }
 
 }
