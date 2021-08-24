@@ -19,10 +19,14 @@ class ChangeNotificationViewModel : ViewModel() {
     private val depositDatabase = FirebaseDatabase.getInstance().getReference("rutnap")
     private val userDatabase = FirebaseDatabase.getInstance().getReference("user")
     private val incomeDatabase = FirebaseDatabase.getInstance().getReference("income")
+    private val notificationDatabase = FirebaseDatabase.getInstance().getReference("noti")
     var money = ObservableField("")
     private val userDatabaseLiveData = MutableLiveData<MutableList<User>>()
 
 
+    private fun getDataFromFirebase() = viewModelScope.launch {
+
+    }
 
 
 }
