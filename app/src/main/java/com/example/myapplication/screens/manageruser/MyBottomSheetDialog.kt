@@ -33,6 +33,7 @@ class MyBottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
         binding?.tvInCome?.setOnClickListener(this)
         binding?.tvUnLockUser?.setOnClickListener(this)
         binding?.tvPayOff?.setOnClickListener(this)
+        binding?.tvMakePhoneCall?.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -52,6 +53,10 @@ class MyBottomSheetDialog : BottomSheetDialogFragment(), View.OnClickListener {
             }
             R.id.tvPayOff -> {
                 onBottomSheetClick.onClick(Const.VIEW_PAY_OFF_USER, user)
+                dismiss()
+            }
+            R.id.tvMakePhoneCall -> {
+                onBottomSheetClick.onClick(Const.VIEW_PHONE_CALL, user)
                 dismiss()
             }
         }

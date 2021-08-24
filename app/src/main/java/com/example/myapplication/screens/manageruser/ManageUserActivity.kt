@@ -1,31 +1,41 @@
 package com.example.myapplication.screens.manageruser
 
+import android.app.Dialog
 import android.content.Intent
-import android.os.Bundle
-import android.widget.Toast
+import android.net.Uri
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.R
 import com.example.myapplication.base.BaseActivity
 import com.example.myapplication.base.Const
 import com.example.myapplication.base.LoadingDialog
 import com.example.myapplication.base.ShowDialog
 import com.example.myapplication.databinding.ActivityManageUserBinding
+import com.example.myapplication.databinding.DialogPayoffBinding
 import com.example.myapplication.model.User
 import com.example.myapplication.screens.userdeposit.UserDepositActivity
 import com.example.myapplication.screens.userincome.UserIncomeActivity
 import kotlinx.android.synthetic.main.activity_manage_deposit.*
 import kotlinx.android.synthetic.main.activity_manage_user.*
 
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+
+import androidx.databinding.DataBindingUtil
+import com.example.myapplication.R
+import android.view.WindowManager
+
+
 class ManageUserActivity : BaseActivity<ActivityManageUserBinding>(), ItemUserOnClick,
-    OnBottomSheetClick {
+    OnBottomSheetClick, OnPayOffClickEvent {
 
 
     private val viewModel: ManageUserViewModel by viewModels()
     private var manageUserAdapter: ManageUserAdapter? = null
     private val list = arrayListOf<User>()
     private lateinit var loading: LoadingDialog
-    private lateinit var dialog: ShowDialog.Builder
+    private lateinit var mDialog: ShowDialog.Builder
+    private lateinit var dialogBinding: DialogPayoffBinding
 
     override fun initLayout(): Int = R.layout.activity_manage_user
 
@@ -42,6 +52,8 @@ class ManageUserActivity : BaseActivity<ActivityManageUserBinding>(), ItemUserOn
     }
 
     private fun initRecyclerViews() {
+        loading = LoadingDialog.getInstance(this)
+        mDialog = ShowDialog.Builder(this)
         manageUserAdapter = ManageUserAdapter(list, this)
         binding.let {
             rcvUser.apply {
@@ -78,25 +90,33 @@ class ManageUserActivity : BaseActivity<ActivityManageUserBinding>(), ItemUserOn
     override fun onClick(value: String, user: User?) {
         when (value) {
             Const.VIEW_PAY_OFF_USER -> {
-                Toast.makeText(this, "${user?.name}", Toast.LENGTH_SHORT).show()
+                showPayOffBottomSheet(user)
             }
             Const.VIEW_UNLOCK_USER -> {
                 viewModel.unLockForUser(user!!)
-                Toast.makeText(
-                    this,
-                    "Bạn đã mở khóa cho tài khoản ${user.name} thành công",
-                    Toast.LENGTH_SHORT
-                ).show()
+                mDialog.show("Mở khóa thành công", "Bạn đã mở khóa cho tài khoản ${user.name}")
             }
             Const.VIEW_INCOME_USER -> {
                 moveToUserIncomeActivity(user)
             }
             Const.VIEW_HISTORY_DEPOSIT_USER -> {
                 moveToUserDepositActivity(user)
-
+            }
+            Const.VIEW_PHONE_CALL -> {
+                makeThePhoneCall(user)
             }
         }
+    }
 
+    private fun makeThePhoneCall(user: User?) {
+        val intent = Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", user?.phone, null))
+        startActivity(intent)
+    }
+
+    private fun showPayOffBottomSheet(user: User?) {
+        val bottomSheet = BottomSheetPayOff()
+        bottomSheet.show(supportFragmentManager, "MyBottomSheetA")
+        bottomSheet.setUser(user)
     }
 
     private fun moveToUserDepositActivity(user: User?) {
@@ -112,6 +132,87 @@ class ManageUserActivity : BaseActivity<ActivityManageUserBinding>(), ItemUserOn
             putExtra("123", user)
         }
         startActivity(intent)
+    }
+
+
+    private fun showDialogForBonusOrPunish(value: String, user: User?) {
+        val dialog = Dialog(this)
+        val binding: DialogPayoffBinding = DataBindingUtil
+            .inflate(
+                LayoutInflater.from(this),
+                R.layout.dialog_payoff,
+                null,
+                false
+            )
+        dialog.apply {
+            window?.setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+        }
+        dialog.setContentView(binding.root)
+
+        when (value) {
+            Const.VIEW_PUNISH -> {
+                binding.tvDDD.text = "Bạn phạt người dùng ${user?.name}"
+            }
+            Const.VIEW_BONUS -> {
+                binding.tvDDD.text = "Bạn thưởng người dùng ${user?.name}"
+            }
+        }
+
+
+        binding.tvConfirmPayOff.setOnClickListener {
+            when (value) {
+                Const.VIEW_PUNISH -> {
+                    if (binding.edtMoney.text!!.isNotEmpty()) {
+                        viewModel.updateTheMoneyForUser(
+                            user,
+                            -binding.edtMoney.text.toString().toLong()
+                        )
+                        dialog.dismiss()
+                        return@setOnClickListener
+                    }
+                    mDialog.show("Không được bỏ khoản tiền", "")
+
+                }
+                Const.VIEW_BONUS -> {
+                    if (binding.edtMoney.text!!.isNotEmpty()) {
+                        viewModel.updateTheMoneyForUser(
+                            user,
+                            binding.edtMoney.text.toString().toLong()
+                        )
+                        dialog.dismiss()
+                        return@setOnClickListener
+                    }
+                    mDialog.show("Không được bỏ khoản tiền", "")
+                }
+            }
+        }
+
+        binding.tvCancelPayOff.setOnClickListener {
+            dialog.dismiss()
+        }
+
+
+
+        dialog.show()
+
+    }
+
+    override fun onPayOffClick(value: String, user: User) {
+        when (value) {
+            Const.VIEW_BONUS -> {
+                showDialogForBonusOrPunish(value, user)
+            }
+            Const.VIEW_PUNISH -> {
+                showDialogForBonusOrPunish(value, user)
+            }
+        }
+    }
+
+    companion object {
+        private const val TAG = "ManageUserActivity"
     }
 
 }

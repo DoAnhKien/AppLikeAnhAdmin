@@ -3,7 +3,7 @@
     package="com.example.myapplication" >
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -27,8 +27,8 @@
         <activity android:name=".screens.main.MainActivity" />
         <activity android:name=".screens.splash.LoginActivity" />
         <activity android:name=".screens.managedeposit.ManageDepositActivity" />
-        <activity android:name=".screens.managerhistory.ManageHistoryActivity" />
-        <activity android:name=".screens.managerpayoff.ManagePayOffActivity" />
+        <activity android:name=".screens.managerhistory.ChangeAdminInformationActivity" />
+        <activity android:name=".screens.managerpayoff.ChangeNotificationActivity" />
         <activity android:name=".screens.manageruser.ManageUserActivity" />
         <activity android:name=".screens.userdeposit.UserDepositActivity" />
     </application>

@@ -115,7 +115,6 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <androidx.cardview.widget.CardView
@@ -127,7 +126,7 @@
                         app:cardElevation="8dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
-                            android:id="@+id/llMangeHistory"
+                            android:id="@+id/llManageNotification"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
@@ -141,7 +140,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Quản lý lịch sử" />
+                                android:text="Quản lý thông báo" />
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -157,7 +156,7 @@
                         app:cardElevation="8dp">
 
                         <androidx.appcompat.widget.LinearLayoutCompat
-                            android:id="@+id/llManagePayOff"
+                            android:id="@+id/llChangeInformationAdmin"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
@@ -171,7 +170,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="Quản lý thưởng phạt" />
+                                android:text="Thay đổi thông tin cá nhân" />
 
                         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -180,6 +179,7 @@
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
+
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 

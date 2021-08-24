@@ -12,9 +12,20 @@
         android:padding="16dp">
 
         <TextView
+            android:id="@+id/tvMakePhoneCall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:padding="15dp"
+            android:text="Gọi điện thoại tới người dùng"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+        <TextView
             android:id="@+id/tvUnLockUser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="@drawable/button"
             android:padding="15dp"
             android:text="Mở khóa tài khoản"

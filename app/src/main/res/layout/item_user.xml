@@ -11,12 +11,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="120dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="8dp"
             app:cardCornerRadius="8dp"
             app:cardElevation="8dp">
@@ -29,7 +29,7 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_height="match_parent"
                     android:src="@drawable/ic_baseline_account_circle_24" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -39,26 +39,26 @@
 
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:textColor="@color/main"
                         setUserNameForUser="@{user}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp" />
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/main" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:textColor="@color/main"
                         setUserBankForUser="@{user}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp" />
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/main" />
 
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:textColor="@color/main"
                         setUserMoneyForUser="@{user}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp" />
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/main" />
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 

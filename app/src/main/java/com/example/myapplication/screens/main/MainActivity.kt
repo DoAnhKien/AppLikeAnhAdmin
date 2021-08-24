@@ -1,19 +1,13 @@
 package com.example.myapplication.screens.main
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.View
-import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.myapplication.R
 import com.example.myapplication.base.BaseActivity
 import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.screens.managedeposit.ManageDepositActivity
-import com.example.myapplication.screens.managerhistory.ManageHistoryActivity
-import com.example.myapplication.screens.managerpayoff.ManagePayOffActivity
+import com.example.myapplication.screens.managerhistory.ChangeAdminInformationActivity
+import com.example.myapplication.screens.managerpayoff.ChangeNotificationActivity
 import com.example.myapplication.screens.manageruser.ManageUserActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
@@ -25,9 +19,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
 
     override fun setOnClickForViews() {
         binding?.llManageDeposit?.setOnClickListener(this)
-        binding?.llManagePayOff?.setOnClickListener(this)
+        binding?.llChangeInformationAdmin?.setOnClickListener(this)
         binding?.llManageUser?.setOnClickListener(this)
-        binding?.llMangeHistory?.setOnClickListener(this)
+        binding?.llManageNotification?.setOnClickListener(this)
     }
 
     override fun initViews() {
@@ -39,14 +33,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
             R.id.llManageDeposit -> {
                 moveToDepositActivity()
             }
-            R.id.llManagePayOff -> {
-                moveToPayOffActivity()
+            R.id.llManageNotification -> {
+                moveToNotificationActivity()
             }
             R.id.llManageUser -> {
                 moveToUserActivity()
             }
-            R.id.llMangeHistory -> {
-                moveToHistoryActivityActivity()
+            R.id.llChangeInformationAdmin -> {
+                moveToChangeInformationAdminActivity()
             }
         }
     }
@@ -56,8 +50,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
         startActivity(moveToDepositIntent)
     }
 
-    private fun moveToHistoryActivityActivity() {
-        val moveToHistoryIntent = Intent(this, ManageHistoryActivity::class.java)
+    private fun moveToChangeInformationAdminActivity() {
+        val moveToHistoryIntent = Intent(this, ChangeAdminInformationActivity::class.java)
         startActivity(moveToHistoryIntent)
     }
 
@@ -66,8 +60,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
         startActivity(moveToUserActivityIntent)
     }
 
-    private fun moveToPayOffActivity() {
-        val moveToPayOffActivityIntent = Intent(this, ManagePayOffActivity::class.java)
+    private fun moveToNotificationActivity() {
+        val moveToPayOffActivityIntent = Intent(this, ChangeNotificationActivity::class.java)
         startActivity(moveToPayOffActivityIntent)
     }
 
