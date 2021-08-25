@@ -9,4 +9,7 @@ object Const {
 
     const val VIEW_PUNISH = "VIEW_PUNISH"
     const val VIEW_BONUS = "VIEW_BONUS"
+
+    const val YOU_TURNED_OFF_THE_NOTIFICATION = "Bạn đã tắt thông báo"
+    const val YOU_TURNED_ON_THE_NOTIFICATION = "Bạn đã bật thông báo"
 }

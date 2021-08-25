@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.myapplication.R
 import com.example.myapplication.base.BaseActivity
+import com.example.myapplication.base.Const
 import com.example.myapplication.base.LoadingDialog
 import com.example.myapplication.base.ShowDialog
 
@@ -35,24 +36,24 @@ class ChangeNotificationActivity : BaseActivity<ActivityChangeNotificationBindin
             binding?.notification = it
             if (it.status) {
                 binding?.cbStatus!!.isChecked = true;
-                binding?.tvStatus?.text = "True"
+                binding?.tvStatus?.text =  Const.YOU_TURNED_ON_THE_NOTIFICATION
             } else if (!it.status) {
                 binding?.cbStatus!!.isSelected = false
-                binding?.tvStatus?.text = "False"
+                binding?.tvStatus?.text = Const.YOU_TURNED_OFF_THE_NOTIFICATION
             }
         })
     }
 
     private fun updateInformationForNotification() {
         if (binding?.edtContent?.text!!.toString().isNotEmpty()) {
-            if (binding?.tvStatus!!.text!!.toString() == "False") {
+            if (binding?.tvStatus!!.text!!.toString() == Const.YOU_TURNED_OFF_THE_NOTIFICATION) {
                 viewModel.updateNotificationInformation(binding?.edtContent?.text.toString(), false)
-                Toast.makeText(this, "Cap nhat thong tin thanh cong", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Cập nhật thông tin thành công", Toast.LENGTH_SHORT).show()
                 onBackPressed()
                 return
             }
             viewModel.updateNotificationInformation(binding?.edtContent?.text.toString(), true)
-            Toast.makeText(this, "Cap nhat thong tin thanh cong", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Cập nhật thông tin thành công", Toast.LENGTH_SHORT).show()
             onBackPressed()
             return
         }
@@ -61,13 +62,13 @@ class ChangeNotificationActivity : BaseActivity<ActivityChangeNotificationBindin
     }
 
     private fun changeTheStatus() {
-        if (binding?.tvStatus!!.text!!.toString() == "False") {
-            binding?.cbStatus!!.isChecked = true;
-            binding?.tvStatus?.text = "True"
+        if (binding?.tvStatus!!.text!!.toString() == Const.YOU_TURNED_OFF_THE_NOTIFICATION) {
+            binding?.cbStatus!!.isChecked = true
+            binding?.tvStatus?.text = Const.YOU_TURNED_ON_THE_NOTIFICATION
             return
         }
         binding?.cbStatus!!.isSelected = false
-        binding?.tvStatus?.text = "False"
+        binding?.tvStatus?.text = Const.YOU_TURNED_OFF_THE_NOTIFICATION
     }
 
 
