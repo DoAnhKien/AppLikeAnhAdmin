@@ -1,6 +1,8 @@
 package com.example.myapplication.screens.managerhistory
 
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.myapplication.R
 import com.example.myapplication.base.BaseActivity
@@ -46,10 +48,15 @@ class ChangeAdminInformationActivity : BaseActivity<ActivityChangeAdminInformati
         val adminName = binding?.edtAdminName?.text.toString()
         val adminBank = binding?.edtAdminBank?.text.toString()
         val adminStk = binding?.edtAdminStk?.text.toString()
+        Log.d(TAG, "checkToUpdateAdmin: $adminName")
+        Log.d(TAG, "checkToUpdateAdmin: $adminBank")
+        Log.d(TAG, "checkToUpdateAdmin: $adminStk")
+
         if (adminBank.isNotEmpty() && adminName.isNotEmpty() && adminStk.isNotEmpty()) {
             viewModel.updateAdminInformation(adminName, adminBank, adminStk)
             onBackPressed()
-            dialog.show("Cập nhật thông tin thành công", "")
+            Log.d(TAG, "checkToUpdateAdmin: ")
+            Toast.makeText(this, "Cập nhật thông tin thành công", Toast.LENGTH_SHORT).show()
             return
         }
         dialog.show("Không được bỏ trống thông tin", "")
@@ -58,11 +65,15 @@ class ChangeAdminInformationActivity : BaseActivity<ActivityChangeAdminInformati
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.tvCancelInformationOfUser -> {
-                checkToUpdateAdmin()
-            }
-            R.id.tvConfirmInformationOfUser -> {
                 onBackPressed()
             }
+            R.id.tvConfirmInformationOfUser -> {
+                checkToUpdateAdmin()
+            }
         }
+    }
+
+    companion object {
+        private const val TAG = "ChangeAdminInformationActivity"
     }
 }

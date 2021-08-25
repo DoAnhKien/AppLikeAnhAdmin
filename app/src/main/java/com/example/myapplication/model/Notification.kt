@@ -1,8 +1,8 @@
 package com.example.myapplication.model
 
 data class Notification(
-    val mess: String,
-    val status: Boolean,
+    var mess: String,
+    var status: Boolean,
 ) {
     constructor() : this(
         "",

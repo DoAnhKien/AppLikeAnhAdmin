@@ -5,7 +5,10 @@
 
     <data>
 
-        ></data>
+        <variable
+            name="notification"
+            type="com.example.myapplication.model.Notification" />
+    </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -33,24 +36,26 @@
             android:layout_marginBottom="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtTk"
+                android:id="@+id/edtContent"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:drawablePadding="10dp"
-                android:hint="Nhập thông điệp "
-                android:inputType="text" />
+                android:hint="Nhập thông điệp"
+                android:inputType="text"
+                android:text="@{notification.mess}" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <RadioButton
-                android:id="@+id/radioButton"
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cbStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvStatus"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -69,7 +74,7 @@
 
 
             <TextView
-                android:id="@+id/tvConfirmInformationOfUser"
+                android:id="@+id/tvUpdateNotification"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="20dp"
@@ -80,7 +85,7 @@
                 android:text="Xác nhận" />
 
             <TextView
-                android:id="@+id/tvCancelInformationOfUser"
+                android:id="@+id/tvCancelUpdateNotification"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"

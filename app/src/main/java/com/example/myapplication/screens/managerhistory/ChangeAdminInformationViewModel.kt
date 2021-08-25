@@ -41,12 +41,14 @@ class ChangeAdminInformationViewModel : ViewModel() {
 
     fun updateAdminInformation(adminName: String, adminBank: String, adminStk: String) =
         viewModelScope.launch {
+            Log.d(TAG, "updateAdminInformation: 123")
             var userNameHashMap: HashMap<String, String> = HashMap<String, String>()
             userNameHashMap["name"] = adminName
             userNameHashMap["bank"] = adminBank
             userNameHashMap["stk"] = adminStk
             adminDatabase.updateChildren(userNameHashMap as Map<String, Any>)
                 .addOnSuccessListener {
+                    Log.d(TAG, "updateAdminInformation: succees")
                 }.addOnFailureListener {
                     Log.d(TAG, "updateTheUserPackage: + ${it.message}")
                 }

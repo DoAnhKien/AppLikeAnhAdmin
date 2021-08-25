@@ -2,12 +2,14 @@ package com.example.myapplication.utils
 
 import android.annotation.SuppressLint
 import android.util.Log
+import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.example.myapplication.R
 import com.example.myapplication.model.Deposit
+import com.example.myapplication.model.Notification
 import com.example.myapplication.model.User
 import java.lang.Exception
 import java.text.DecimalFormat
@@ -81,5 +83,29 @@ object BindingUtils {
         tv.setTextColor(R.color.rut)
 
     }
+
+    @BindingAdapter("setCBForNotification")
+    @JvmStatic
+    fun cbForNotification(checkBox: CheckBox?, notification: Notification?) {
+//        if (notification!!.status) {
+//            checkBox?.isSelected = true
+//            return
+//        }
+//        checkBox?.isSelected = false
+    }
+
+    @BindingAdapter("setTextForNotification")
+    @JvmStatic
+    fun textForNotification(tv: TextView?, notification: Notification?) {
+
+        if (notification?.status!!) {
+            tv?.text = "True"
+            return
+        }
+        tv?.text = "False"
+
+
+    }
+
 
 }
