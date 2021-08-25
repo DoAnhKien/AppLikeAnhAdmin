@@ -12,6 +12,10 @@ import com.example.myapplication.base.*
 import com.example.myapplication.databinding.ActivityManageDepositBinding
 import com.example.myapplication.model.Deposit
 import com.example.myapplication.model.User
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_manage_deposit.*
 import java.text.Format
 import java.text.SimpleDateFormat
@@ -24,6 +28,7 @@ class ManageDepositActivity : BaseActivity<ActivityManageDepositBinding>(), Item
     private val list = arrayListOf<Deposit>()
     private lateinit var loading: LoadingDialog
     private lateinit var dialog: ShowDialog.Builder
+    private val userDatabase = FirebaseDatabase.getInstance().getReference("user")
 
     override fun initLayout(): Int = R.layout.activity_manage_deposit
 
@@ -82,8 +87,17 @@ class ManageDepositActivity : BaseActivity<ActivityManageDepositBinding>(), Item
     }
 
     private fun initUserData(deposit: Deposit) {
-        viewModel.getUserDatabase().observe(this, { user ->
-            showDialog(user, deposit)
+        userDatabase.child(deposit.uid).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val user = snapshot.getValue(User::class.java)
+                showDialog(user, deposit)
+                return
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
         })
     }
 

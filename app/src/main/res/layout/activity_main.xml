@@ -37,7 +37,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="20dp"
                         android:gravity="center"
-                        android:text="Xin chao Do Anh Kien"
+                        android:text="Xin chào Admin"
                         android:textColor="@color/black"
                         android:textSize="23dp"
                         android:textStyle="bold" />

@@ -70,6 +70,7 @@ class DepositViewModel : ViewModel() {
                 })
             return@launch
         }
+
         userDatabase.child(deposit.uid).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue(User::class.java)
@@ -92,14 +93,15 @@ class DepositViewModel : ViewModel() {
     }
 
     fun checkToUpdateRutNapDatabase(deposit: Deposit) = viewModelScope.launch {
+        Log.d(TAG, "checkToUpdateRutNapDatabase: ${deposit.uid + "rut"}")
         depositDatabase.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val listValue = mutableListOf<Deposit>()
                 for (value in snapshot.children) {
                     val currentValue = value.getValue(Deposit::class.java)
 
-                    if (currentValue == deposit) {
-                        if (currentValue.isRut) {
+                    if (currentValue?.uid == deposit.uid) {
+                        if (currentValue?.isRut) {
                             val userNameHashMap: HashMap<String, Boolean> =
                                 HashMap<String, Boolean>()
                             userNameHashMap["status"] = true
@@ -117,6 +119,7 @@ class DepositViewModel : ViewModel() {
                         depositDatabase.child(deposit.uid + "nap")
                             .updateChildren(userNameHashMap as Map<String, Any>)
                             .addOnSuccessListener {
+
                             }.addOnFailureListener {
                                 Log.d(TAG, "updateTheUserPackage: + ${it.message}")
                             }
@@ -136,21 +139,14 @@ class DepositViewModel : ViewModel() {
     fun checkToUpdateTheIncomeDatabase(deposit: Deposit) = viewModelScope.launch {
         deposit.status = true
         incomeDatabase.child(deposit.uid).push().setValue(deposit)
-
     }
 
     fun getDataOfTheUser(deposit: Deposit) = viewModelScope.launch {
-        userDatabase.child(deposit.uid).addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val user = snapshot.getValue(User::class.java)
-                userLiveData.postValue(user)
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
+    }
 
-        })
+    interface GetDataFromFirebase {
+        fun getUser(user: User)
     }
 
     fun getDepositData(): LiveData<MutableList<Deposit>> {
@@ -160,6 +156,7 @@ class DepositViewModel : ViewModel() {
     fun getUserDatabase(): LiveData<User?> {
         return userLiveData
     }
+
 
     companion object {
         private const val TAG = "DepositViewModel"

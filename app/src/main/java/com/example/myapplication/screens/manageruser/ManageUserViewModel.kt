@@ -51,7 +51,7 @@ class ManageUserViewModel : ViewModel() {
             true,
             status = true
         )
-        depositDatabase.child(user.uid).push().setValue(deposit)
+        incomeDatabase.child(user.uid).push().setValue(deposit)
         userDatabase.child(user!!.uid).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var currentUser = snapshot.getValue(User::class.java)

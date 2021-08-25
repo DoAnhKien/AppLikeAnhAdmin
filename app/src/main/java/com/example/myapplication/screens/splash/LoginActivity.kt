@@ -45,6 +45,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(), View.OnClickListener
                         //Save login done
                         SharedPref.getInstance(this@LoginActivity).setBoolean("isLogin", true)
                         startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                        finish()
                     }
                     else{
                         Toast.makeText(this@LoginActivity, "Tài khoản hoặc mật khẩu không chính xác!", Toast.LENGTH_SHORT).show()

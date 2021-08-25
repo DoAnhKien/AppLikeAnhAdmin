@@ -48,10 +48,6 @@ class ChangeAdminInformationActivity : BaseActivity<ActivityChangeAdminInformati
         val adminName = binding?.edtAdminName?.text.toString()
         val adminBank = binding?.edtAdminBank?.text.toString()
         val adminStk = binding?.edtAdminStk?.text.toString()
-        Log.d(TAG, "checkToUpdateAdmin: $adminName")
-        Log.d(TAG, "checkToUpdateAdmin: $adminBank")
-        Log.d(TAG, "checkToUpdateAdmin: $adminStk")
-
         if (adminBank.isNotEmpty() && adminName.isNotEmpty() && adminStk.isNotEmpty()) {
             viewModel.updateAdminInformation(adminName, adminBank, adminStk)
             onBackPressed()
