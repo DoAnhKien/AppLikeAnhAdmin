@@ -10,8 +10,9 @@ data class Admin(
     var bank: String,
     var stk: String,
     var name: String,
+    var sdt: String,
 ) : Parcelable {
     constructor() : this(
-        "","", "", "", ""
+        "", "", "", "", "", ""
     )
 }

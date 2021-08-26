@@ -8,6 +8,7 @@ import com.example.myapplication.databinding.ActivityMainBinding
 import com.example.myapplication.screens.managedeposit.ManageDepositActivity
 import com.example.myapplication.screens.managerhistory.ChangeAdminInformationActivity
 import com.example.myapplication.screens.managerpayoff.ChangeNotificationActivity
+import com.example.myapplication.screens.managerphoto.ManageThePhotoActivity
 import com.example.myapplication.screens.manageruser.ManageUserActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
@@ -22,6 +23,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
         binding?.llChangeInformationAdmin?.setOnClickListener(this)
         binding?.llManageUser?.setOnClickListener(this)
         binding?.llManageNotification?.setOnClickListener(this)
+        binding?.llMangeThePhoTo?.setOnClickListener(this)
     }
 
     override fun initViews() {
@@ -41,6 +43,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
             }
             R.id.llChangeInformationAdmin -> {
                 moveToChangeInformationAdminActivity()
+            }
+            R.id.llMangeThePhoTo -> {
+                moveToManagePhoToActivity()
             }
         }
     }
@@ -63,6 +68,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), View.OnClickListener {
     private fun moveToNotificationActivity() {
         val moveToPayOffActivityIntent = Intent(this, ChangeNotificationActivity::class.java)
         startActivity(moveToPayOffActivityIntent)
+    }
+
+    private fun moveToManagePhoToActivity() {
+        val moveToManageThePhoToActivity = Intent(this, ManageThePhotoActivity::class.java)
+        startActivity(moveToManageThePhoToActivity)
     }
 
 }
