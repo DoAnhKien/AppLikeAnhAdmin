@@ -3,6 +3,7 @@ package com.example.myapplication.screens.managerphoto
 import android.content.Intent
 import android.net.Uri
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import com.example.myapplication.R
 import com.example.myapplication.base.BaseActivity
@@ -17,6 +18,7 @@ import android.webkit.MimeTypeMap
 
 import android.widget.Toast
 import androidx.core.view.isVisible
+import com.example.myapplication.model.ImageData
 
 import com.example.myapplication.model.Upload
 import com.google.firebase.storage.StorageTask
@@ -27,7 +29,7 @@ class ManageThePhotoActivity : BaseActivity<ActivityManageThePhotoBinding>(), Vi
     private lateinit var mImageUri: Uri
     private var mStorageRef: StorageReference? = null
     private var mDatabaseRef: DatabaseReference? = null
-
+    private val imageDatabase = FirebaseDatabase.getInstance().getReference("image")
 
     override fun initLayout(): Int = R.layout.activity_manage_the_photo
 
@@ -72,7 +74,7 @@ class ManageThePhotoActivity : BaseActivity<ActivityManageThePhotoBinding>(), Vi
     private fun upLoadFile() {
         if (mImageUri != null) {
             var imageRef = FirebaseStorage.getInstance().reference.child("image/background.png")
-            imageRef.putFile(mImageUri).addOnSuccessListener {
+            imageRef.putFile(mImageUri).addOnSuccessListener { snapshot ->
                 onBackPressed()
                 Toast.makeText(this, "Cập nhật ảnh thành công", Toast.LENGTH_SHORT).show()
             }.addOnCanceledListener {
