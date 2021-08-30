@@ -2,6 +2,8 @@ package com.example.myapplication.screens.manageruser
 
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,8 +11,7 @@ import com.example.myapplication.base.BaseActivity
 import com.example.myapplication.base.Const
 import com.example.myapplication.base.LoadingDialog
 import com.example.myapplication.base.ShowDialog
-import com.example.myapplication.databinding.ActivityManageUserBinding
-import com.example.myapplication.databinding.DialogPayoffBinding
+
 import com.example.myapplication.model.User
 import com.example.myapplication.screens.userdeposit.UserDepositActivity
 import com.example.myapplication.screens.userincome.UserIncomeActivity
@@ -24,6 +25,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.example.myapplication.R
 import android.view.WindowManager
+import com.example.myapplication.databinding.ActivityManageUserBinding
+import com.example.myapplication.databinding.DialogPayoffBinding
 
 
 class ManageUserActivity : BaseActivity<ActivityManageUserBinding>(), ItemUserOnClick,
@@ -151,52 +154,51 @@ class ManageUserActivity : BaseActivity<ActivityManageUserBinding>(), ItemUserOn
             )
         }
         dialog.setContentView(binding.root)
-
-        when (value) {
-            Const.VIEW_PUNISH -> {
-                binding.tvDDD.text = "Bạn phạt người dùng ${user?.name}"
-            }
-            Const.VIEW_BONUS -> {
-                binding.tvDDD.text = "Bạn thưởng người dùng ${user?.name}"
-            }
-        }
-
-
-        binding.tvConfirmPayOff.setOnClickListener {
-            when (value) {
-                Const.VIEW_PUNISH -> {
-                    if (binding.edtMoney.text!!.isNotEmpty()) {
-                        viewModel.updateTheMoneyForUser(
-                            user,
-                            -binding.edtMoney.text.toString().toLong()
-                        )
-                        dialog.dismiss()
-                        return@setOnClickListener
-                    }
-                    mDialog.show("Không được bỏ khoản tiền", "")
-
-                }
-                Const.VIEW_BONUS -> {
-                    if (binding.edtMoney.text!!.isNotEmpty()) {
-                        viewModel.updateTheMoneyForUser(
-                            user,
-                            binding.edtMoney.text.toString().toLong()
-                        )
-                        dialog.dismiss()
-                        return@setOnClickListener
-                    }
-                    mDialog.show("Không được bỏ khoản tiền", "")
-                }
-            }
-        }
-
-        binding.tvCancelPayOff.setOnClickListener {
-            dialog.dismiss()
-        }
-
-
-
         dialog.show()
+
+//        when (value) {
+//            Const.VIEW_PUNISH -> {
+//                binding.tvDDD.text = "Bạn phạt người dùng ${user?.name}"
+//            }
+//            Const.VIEW_BONUS -> {
+//                binding.tvDDD.text = "Bạn thưởng người dùng ${user?.name}"
+//            }
+//        }
+//
+//
+//        binding.tvConfirmPayOff.setOnClickListener {
+//            when (value) {
+//                Const.VIEW_PUNISH -> {
+//                    if (binding.edtMoney.text!!.isNotEmpty()) {
+//                        viewModel.updateTheMoneyForUser(
+//                            user,
+//                            -binding.edtMoney.text.toString().toLong()
+//                        )
+//                        dialog.dismiss()
+//                        return@setOnClickListener
+//                    }
+//                    mDialog.show("Không được bỏ khoản tiền", "")
+//
+//                }
+//                Const.VIEW_BONUS -> {
+//                    if (binding.edtMoney.text!!.isNotEmpty()) {
+//                        viewModel.updateTheMoneyForUser(
+//                            user,
+//                            binding.edtMoney.text.toString().toLong()
+//                        )
+//                        dialog.dismiss()
+//                        return@setOnClickListener
+//                    }
+//                    mDialog.show("Không được bỏ khoản tiền", "")
+//                }
+//            }
+//        }
+//
+//        binding.tvCancelPayOff.setOnClickListener {
+//            dialog.dismiss()
+//        }
+
+
 
     }
 

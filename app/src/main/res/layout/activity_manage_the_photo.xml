@@ -40,6 +40,17 @@
             android:textSize="24dp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/tvShowText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="Bạn cần chọn ảnh trong máy của bạn"
+            android:textColor="@color/main"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
 
         <LinearLayout
             android:id="@+id/llmm"

@@ -16,10 +16,13 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="Danh sách người dùng"
-            android:textColor="@color/black" />
+            android:textColor="@color/main"
+            android:textSize="24dp"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvUser"

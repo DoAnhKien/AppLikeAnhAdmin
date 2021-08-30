@@ -20,7 +20,8 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="Danh sách yêu cầu nạp rút tiền"
-            android:textColor="@color/black" />
+            android:textColor="@color/main"
+            android:textSize="20dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvDeposit"

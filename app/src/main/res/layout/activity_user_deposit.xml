@@ -19,8 +19,8 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="Danh sách nạp rút tiền của người dùng"
-            android:textColor="@color/black"
-            android:textSize="15dp" />
+            android:textColor="@color/main"
+            android:textSize="20dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvUserDeposit"

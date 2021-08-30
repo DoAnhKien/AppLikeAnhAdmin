@@ -40,6 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
                 android:drawablePadding="10dp"
+                android:textColor="@color/main"
                 android:hint="Nhập thông điệp"
                 android:inputType="text"
                 android:text="@{notification.mess}" />

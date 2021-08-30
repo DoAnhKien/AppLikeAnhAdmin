@@ -19,7 +19,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="Danh sách thu nhập"
-            android:textColor="@color/black"
+            android:textColor="@color/main"
             android:textSize="20dp" />
 
         <androidx.recyclerview.widget.RecyclerView
