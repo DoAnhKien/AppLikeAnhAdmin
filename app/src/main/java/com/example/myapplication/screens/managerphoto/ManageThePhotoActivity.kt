@@ -90,7 +90,7 @@ class ManageThePhotoActivity : BaseActivity<ActivityManageThePhotoBinding>(), Vi
 
     private fun upLoadFile() {
         if (mImageUri != null) {
-            var imageRef = FirebaseStorage.getInstance().reference.child("image/background.png")
+            val imageRef = FirebaseStorage.getInstance().reference.child("image/background.png")
             imageRef.putFile(mImageUri!!).addOnSuccessListener { snapshot ->
                 onBackPressed()
                 Toast.makeText(this, "Cập nhật ảnh thành công", Toast.LENGTH_SHORT).show()

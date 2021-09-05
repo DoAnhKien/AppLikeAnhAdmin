@@ -149,6 +149,7 @@ class ManageDepositActivity : BaseActivity<ActivityManageDepositBinding>(), Item
                     viewModel.checkToUpdateMoneyForUser(deposit)
                     viewModel.checkToUpdateRutNapDatabase(deposit)
                     viewModel.checkToUpdateTheIncomeDatabase(deposit)
+                    viewModel.checkToUpdateUserPackage(user!!, deposit)
                     dialog?.dismiss()
                 }
             })
